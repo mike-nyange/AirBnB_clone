@@ -1,18 +1,10 @@
 #!/usr/bin/python3
-'''
-Contains the Review Model
-'''
+"""Review class"""
 from models.base_model import BaseModel
 
 
 class Review(BaseModel):
-    '''
-    A model for the Review
-    Attributes:
-        place_id (str): The id of the place being reviewed
-        user_id (str): The id of the user who gave the review
-        text (str): The actual review
-    '''
+    """review class"""
     place_id = ""
     user_id = ""
     text = ""

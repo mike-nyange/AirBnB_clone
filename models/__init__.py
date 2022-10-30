@@ -1,9 +1,8 @@
 #!/usr/bin/python3
-'''
-Instantiates Models and creates an instance of FileStorage
-Then reloads the stored instances
-'''
-from models.engine import file_storage
+"""Creates a unique FileStorage instance for this application."""
 
-storage = file_storage.FileStorage()
+from models.engine.file_storage import FileStorage
+
+
+storage = FileStorage()
 storage.reload()

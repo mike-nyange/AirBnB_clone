@@ -1,17 +1,13 @@
-.header{
-    background-color: white;
-    height: 70px;
-    width: 100%;
-    border-bottom: 1px solid #CCCCCC;
-    align-items: center;
+header {
+      background-color: white;
+      height: 70px;
+      width: 100%;
+      border-bottom: 1px solid #CCCCCC;
 }
-
-.logo{
-    align-self: left;
-    margin-left: 20px;
-    background-image: url('../images/logo.png');
-    height: 60px;
-    width: 140px;
-    border-bottom: none;
-    vertical-align: middle;
+.logo {
+      background-image: url(../images/logo.png);
+      position: absolute;
+      width: 136px;
+      height: 60px;
+      left: 20px;
 }

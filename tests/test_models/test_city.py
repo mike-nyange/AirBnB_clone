@@ -1,75 +1,28 @@
 #!/usr/bin/python3
-'''
-Contains all tests for the base_model class
-'''
-from models.base_model import BaseModel
-from models.city import City
+"""Unittest for CityModel class"""
+
 import unittest
-import os
+from models.city import City
 
 
-class TestCity(unittest.TestCase):
-    '''
-    Tests that the BaseModel works okay
-    '''
+class test_City(unittest.TestCase):
+    """Test cases for class CityModel"""
+
     def setUp(self):
-        '''
-        Set up method
-        Renames the file_storage file to avoid iterfering with data
-        '''
-        if os.path.isfile("file.json"):
-            os.rename("file.json", "backup_file.json")
-
-        self.model_1 = City()
-        self.model_2 = City()
+        """Basic setup parameters"""
+        self.value = City
+        self.name = "City"
+        self.attr_list = ["state_id", "name"]
 
     def tearDown(self):
-        '''
-        Tear down method
-        Does clean up
-        '''
-        if os.path.isfile("file.json"):
-            os.remove("file.json")
-        if os.path.isfile("backup_file.json"):
-            os.rename("backup_file.json", "file.json")
+        """Basic teardown functions"""
+        pass
 
-        del self.model_1
-        del self.model_2
+    def test_attributes(self):
+        """Test City attributes"""
+        new = self.value()
+        self.assertTrue(hasattr(new, "state_id"))
+        self.assertTrue(hasattr(new, "name"))
+        self.assertTrue(type(new.state_id),str)
+        self.assertTrue(type(new.name),str)
 
-    def test_attributes_types(self):
-        '''
-        Test that all attributes are of the correct type
-        '''
-        self.assertIsInstance(self.model_1.name, str)
-        self.assertIsInstance(self.model_1.state_id, str)
-
-    def test_attributes_exist(self):
-        '''
-        Test that class City has the required attributes and methods
-        '''
-        self.assertTrue(hasattr(City, 'name'))
-        self.assertTrue(hasattr(City, 'state_id'))
-
-    def test_isinstance(self):
-        '''
-        Check that the created instance is an instance of the BaseModel class
-        '''
-        self.assertIsInstance(self.model_1, BaseModel)
-
-    def test_is_subclass(self):
-        '''
-        Check whethe City is a subclass of basemodel
-        '''
-        self.assertTrue(issubclass(self.model_1.__class__, BaseModel))
-
-    def test_inherited_attributes(self):
-        '''
-        Confirm that all the required attributes were imported from BaseModel
-        Also confirm that City's attributes are present
-        '''
-        self.assertTrue('id' in self.model_1.__dict__)
-        self.assertTrue('created_at' in self.model_1.__dict__)
-        self.assertTrue('updated_at' in self.model_1.__dict__)
-
-if __name__ == "__main__":
-    unittest.main()
