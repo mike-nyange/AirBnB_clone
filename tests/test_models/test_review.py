@@ -12,6 +12,7 @@ class TestReview(unittest.TestCase):
     '''
     Tests that the BaseModel works okay
     '''
+
     def setUp(self):
         '''
         Set up method
@@ -72,6 +73,7 @@ class TestReview(unittest.TestCase):
         self.assertTrue('id' in self.model_1.__dict__)
         self.assertTrue('created_at' in self.model_1.__dict__)
         self.assertTrue('updated_at' in self.model_1.__dict__)
+
 
 if __name__ == "__main__":
     unittest.main()

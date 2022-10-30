@@ -54,10 +54,10 @@ class FileStorage:
         '''
 
         classes = {
-                    'BaseModel': BaseModel, 'User': User, 'Place': Place,
-                    'State': State, 'City': City, 'Amenity': Amenity,
-                    'Review': Review
-                  }
+            'BaseModel': BaseModel, 'User': User, 'Place': Place,
+            'State': State, 'City': City, 'Amenity': Amenity,
+            'Review': Review
+        }
         try:
             with open(FileStorage.__file_path, "r", encoding="utf-8") as f:
                 json_dict = json.load(f)
@@ -65,7 +65,7 @@ class FileStorage:
                     self.all()[k] = classes[v['__class__']](**v)
         except FileNotFoundError:
             return
-    
+
     def classes(self):
         """Returns a dictionary of valid classes and their references."""
         from models.base_model import BaseModel

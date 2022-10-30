@@ -14,6 +14,7 @@ class TestBaseModel(unittest.TestCase):
     '''
     Tests that the BaseModel works okay
     '''
+
     def setUp(self):
         '''
         Set up method
@@ -105,6 +106,7 @@ class TestBaseModel(unittest.TestCase):
         Test that created objects have unique ids
         '''
         self.assertNotEqual(self.model_1.id, self.model_2.id)
+
 
 if __name__ == "__main__":
     unittest.main()
