@@ -1,8 +1,14 @@
 #!/usr/bin/python3
-"""Amenity class"""
+'''
+Contains the Amenity Model
+'''
 from models.base_model import BaseModel
 
 
 class Amenity(BaseModel):
-    """amenity class"""
+    '''
+    A model for the Amenity
+    Attributes:
+        name (str): The name of the Amenity
+    '''
     name = ""

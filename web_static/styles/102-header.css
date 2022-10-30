@@ -1,4 +1,4 @@
-.header{
+.header {
     background-color: white;
     height: 70px;
     width: 100%;
@@ -6,7 +6,7 @@
     align-items: center;
 }
 
-.logo{
+.logo {
     align-self: left;
     margin-left: 20px;
     background-image: url('../images/logo.png');
@@ -14,4 +14,12 @@
     width: 140px;
     border-bottom: none;
     vertical-align: middle;
+}
+
+@media only screen and (max-width: 768px) {
+    .logo {
+        height: 60px;
+        width: 140px;
+        background-repeat: no-repeat;
+    }
 }

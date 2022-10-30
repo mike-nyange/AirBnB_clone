@@ -1,10 +1,19 @@
 #!/usr/bin/python3
-"""User class module. Its a subclass of the BaseModel"""
+'''
+Module contains class user
+'''
 from models.base_model import BaseModel
 
 
 class User(BaseModel):
-    """User class"""
+    '''
+    A model for the user
+    Attributes:
+        email (str): The user's email
+        password (str): The user's password
+        first_name (str): The user's first name
+        last_name (str): The user's last name
+    '''
     email = ""
     password = ""
     first_name = ""

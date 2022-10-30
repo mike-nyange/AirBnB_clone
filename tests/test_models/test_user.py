@@ -1,44 +1,84 @@
 #!/usr/bin/python3
-"""Unittest for UserModel class"""
-
+'''
+Contains all tests for the base_model class
+'''
 from models.base_model import BaseModel
-import unittest
 from models.user import User
+import unittest
+import os
 
 
-class test_User(unittest.TestCase):
-    """Test cases for class UserModel"""
-
+class TestUser(unittest.TestCase):
+    '''
+    Tests that the BaseModel works okay
+    '''
     def setUp(self):
-        """Basic setup parameters"""
-        self.value = User
-        self.name = "User"
+        '''
+        Set up method
+        Renames the file_storage file to avoid iterfering with data
+        '''
+        if os.path.isfile("file.json"):
+            os.rename("file.json", "backup_file.json")
+
+        self.model_1 = User()
+        self.model_2 = User()
 
     def tearDown(self):
-        """Basic teardown functions"""
-        pass
+        '''
+        Tear down method
+        Does clean up
+        '''
+        if os.path.isfile("file.json"):
+            os.remove("file.json")
+        if os.path.isfile("backup_file.json"):
+            os.rename("backup_file.json", "file.json")
 
-    def test_amenity_superclass(self):
-        """Test that User is subclass of Base Model"""
-        new = self.value()
-        self.assertTrue(issubclass(new.__class__, BaseModel))
+        del self.model_1
+        del self.model_2
 
-    def test_first_name(self):
-        """Test first name attribute"""
-        new = self.value()
-        self.assertEqual(type(new.first_name), str)
+    def test_attributes_types(self):
+        '''
+        Test that all attributes are of the correct type
+        '''
+        self.assertTrue(type(self.model_1), BaseModel)
 
-    def test_last_name(self):
-        """Test last name attribute"""
-        new = self.value()
-        self.assertEqual(type(new.last_name), str)
+    def test_attributes_exist(self):
+        '''
+        Test that class User has the required attributes and methods
+        '''
+        self.assertTrue(hasattr(User, 'email'))
+        self.assertTrue(hasattr(User, 'password'))
+        self.assertTrue(hasattr(User, 'first_name'))
+        self.assertTrue(hasattr(User, 'last_name'))
 
-    def test_email(self):
-        """Test email attribute"""
-        new = self.value()
-        self.assertEqual(type(new.email), str)
+    def test_attribute_types(self):
+        """Test whether the class attributes are of the right type"""
+        user_1 = User()
+        self.assertIsInstance(user_1.email, str)
+        self.assertIsInstance(user_1.password, str)
+        self.assertIsInstance(user_1.first_name, str)
+        self.assertIsInstance(user_1.last_name, str)
 
-    def test_password(self):
-        """Test password attribute"""
-        new = self.value()
-        self.assertEqual(type(new.password), str)
+    def test_isinstance(self):
+        '''
+        Check that the created instance is an instance of the BaseModel class
+        '''
+        self.assertIsInstance(self.model_1, BaseModel)
+
+    def test_is_subclass(self):
+        '''
+        Check whethe User is a subclass of basemodel
+        '''
+        self.assertTrue(issubclass(self.model_1.__class__, BaseModel))
+
+    def test_inherited_attributes(self):
+        '''
+        Confirm that all the required attributes were imported from BaseModel
+        Also confirm that User's attributes are present
+        '''
+        self.assertTrue('id' in self.model_1.__dict__)
+        self.assertTrue('created_at' in self.model_1.__dict__)
+        self.assertTrue('updated_at' in self.model_1.__dict__)
+
+if __name__ == "__main__":
+    unittest.main()

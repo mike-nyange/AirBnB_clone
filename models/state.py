@@ -1,8 +1,14 @@
 #!/usr/bin/python3
-"""State class"""
+'''
+Contains the State Model
+'''
 from models.base_model import BaseModel
 
 
 class State(BaseModel):
-    """state class"""
+    '''
+    A model for the State
+    Attributes:
+        name (str): The name of the State
+    '''
     name = ""
