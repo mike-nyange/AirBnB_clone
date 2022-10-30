@@ -34,17 +34,17 @@ class HBNBCommand(cmd.Cmd):
     '''
     prompt = "(hbnb) "
     __classes = {
-               'BaseModel': BaseModel, 'User': User, 'Place': Place,
-               'State': State, 'City': City, 'Amenity': Amenity,
-               'Review': Review
-              }
+        'BaseModel': BaseModel, 'User': User, 'Place': Place,
+        'State': State, 'City': City, 'Amenity': Amenity,
+        'Review': Review
+    }
     # This is a dictionary of attributes and their values so that we can
     # properly parse them during the update method
     __types = {
-                "number_rooms": int, "number_bathrooms": int,
-                "max_guest": int, "price_by_night": int,
-                "latitude": float, "longitude": float
-            }
+        "number_rooms": int, "number_bathrooms": int,
+        "max_guest": int, "price_by_night": int,
+        "latitude": float, "longitude": float
+    }
 
     def default(self, line):
         """Catch commands if nothing else matches then."""
@@ -347,6 +347,7 @@ class HBNBCommand(cmd.Cmd):
             '''
             print("Quit command to exit the program")
             print()
+
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
